@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import Navbar from "./components/Navbar.jsx";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   
@@ -27,6 +28,7 @@ function App() {
 
        </Routes>
     </div> 
+    <Toaster />
     </div>
   );
 }
