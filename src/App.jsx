@@ -16,7 +16,7 @@ function App() {
 				</div>
 			</div>
 
-			<div className='relative z-50 pt-20'></div>
+			<div className='relative z-50 pt-20'>
 
       <Navbar />
       <Routes> 
@@ -27,6 +27,7 @@ function App() {
 
        </Routes>
     </div> 
+    </div>
   );
 }
 
