@@ -1,12 +1,20 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import Navbar from "./components/Navbar.jsx";
 import { Toaster } from "react-hot-toast";
+import { useUserStore } from "./store/useUserStore.js";
+import { Home } from "lucide-react";
+import { useEffect } from "react";
 
 function App() {
   
+  const {user, checkAuth} = useUserStore()
+
+  useEffect(()=> {
+    checkAuth();
+  }, [checkAuth]);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">  
@@ -24,7 +32,7 @@ function App() {
 
         <Route path = '/' element = {<HomePage />} />
         <Route path = '/signup' element = {<SignUpPage />} />
-        <Route path = '/login' element = {<LoginPage />} />
+        <Route path = '/login' element = {!user ? <LoginPage /> : <Navigate to='/' />} />
 
        </Routes>
     </div> 
