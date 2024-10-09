@@ -7,15 +7,18 @@ import { Toaster } from "react-hot-toast";
 import { useUserStore } from "./store/useUserStore.js";
 import { Home } from "lucide-react";
 import { useEffect } from "react";
+import LoadingSpinner from "./components/LoadingSpinner.jsx";
 
 function App() {
   
-  const {user, checkAuth} = useUserStore()
+  const {user, checkAuth, checkingAuth} = useUserStore()
 
   useEffect(()=> {
     checkAuth();
   }, [checkAuth]);
 
+  if(checkingAuth) return <LoadingSpinner />
+  
   return (
     <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">  
       {/* Background gradient */}
@@ -31,7 +34,7 @@ function App() {
       <Routes> 
 
         <Route path = '/' element = {<HomePage />} />
-        <Route path = '/signup' element = {<SignUpPage />} />
+        <Route path = '/signup' element = {!user ? <SignUpPage /> : <Navigate to='/' />}/>
         <Route path = '/login' element = {!user ? <LoginPage /> : <Navigate to='/' />} />
 
        </Routes>
