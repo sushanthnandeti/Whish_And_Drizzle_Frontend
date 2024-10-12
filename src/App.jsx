@@ -4,20 +4,28 @@ import SignUpPage from "./pages/SignUpPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import AdminPage from "./pages/AdminPage.jsx";
 import CategoryPage from "./pages/CategoryPage.jsx"
+import CartPage from "./pages/CartPage.jsx";
 import Navbar from "./components/Navbar.jsx";
 import { Toaster } from "react-hot-toast";
 import { useUserStore } from "./store/useUserStore.js";
+import { useCartStore } from "./store/useCartStore.js";
 import { Home } from "lucide-react";
 import { useEffect } from "react";
 import LoadingSpinner from "./components/LoadingSpinner.jsx";
 
 function App() {
   
-  const {user, checkAuth, checkingAuth} = useUserStore()
+  const {user, checkAuth, checkingAuth} = useUserStore();
+  const {getCartItems} = useCartStore();
 
   useEffect(()=> {
     checkAuth();
   }, [checkAuth]);
+
+  useEffect(()=> {
+    getCartItems();
+  }, [getCartItems]);
+
 
   if(checkingAuth) return <LoadingSpinner />
 
@@ -40,7 +48,7 @@ function App() {
         <Route path = '/login' element = {!user ? <LoginPage /> : <Navigate to='/' />} />
         <Route path = '/secret-dashboard' element = {user?.role === "admin" ? <AdminPage /> : <Navigate to='/login' />} />
         <Route path = '/category/:category' element = {<CategoryPage />} />
-
+        <Route path = '/cart' element = {user ? <CartPage /> : <Navigate to='/login' />} />
        </Routes>
     </div> 
     <Toaster />
