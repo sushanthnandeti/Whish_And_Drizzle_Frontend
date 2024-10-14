@@ -5,6 +5,7 @@ import CartItem from "../components/CartItem.jsx";
 import {Link} from "react-router-dom";
 import PeopleAlsoBought from "../components/PeopleAlsoBought.jsx";
 import OrderSummary from "../components/OrderSummary.jsx";
+import GiftCouponCard from "../components/GiftCouponCard.jsx";
 
 const CartPage = () => {
 
@@ -40,7 +41,7 @@ const CartPage = () => {
                             >
                             
                             <OrderSummary />
-                        
+                            <GiftCouponCard />
 
                             </motion.div>
                         )}
