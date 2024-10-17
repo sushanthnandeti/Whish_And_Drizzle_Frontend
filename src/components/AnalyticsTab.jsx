@@ -70,6 +70,33 @@ const AnalyticsTab = () => {
             color='from-emerald-500 to-teal-700'
           />
         </div>
+
+        <ResponsiveContainer width='100%' height={400}>
+					<LineChart data={dailySalesData}>
+						<CartesianGrid strokeDasharray='3 3' />
+						<XAxis dataKey='name' stroke='#D1D5DB' />
+						<YAxis yAxisId='left' stroke='#D1D5DB' />
+						<YAxis yAxisId='right' orientation='right' stroke='#D1D5DB' />
+						<Tooltip />
+						<Legend />
+						<Line
+							yAxisId='left'
+							type='monotone'
+							dataKey='sales'
+							stroke='#10B981'
+							activeDot={{ r: 8 }}
+							name='Sales'
+						/>
+						<Line
+							yAxisId='right'
+							type='monotone'
+							dataKey='revenue'
+							stroke='#3B82F6'
+							activeDot={{ r: 8 }}
+							name='Revenue'
+						/>
+					</LineChart>
+				</ResponsiveContainer>
       </div>
   )
 }
