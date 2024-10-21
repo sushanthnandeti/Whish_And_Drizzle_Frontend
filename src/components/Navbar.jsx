@@ -1,14 +1,20 @@
-import { ShoppingCart, UserPlus, LogIn, LogOut, Lock } from "lucide-react";
+import { ShoppingCart, UserPlus, LogIn, LogOut, Lock, User, Settings, Menu} from "lucide-react";
 import { Link } from "react-router-dom";
 import { useUserStore } from "../store/useUserStore.js";
 import { useCartStore } from "../store/useCartStore.js";
-
+import { useState } from "react";
 
 const Navbar = () => {
 
   const {user, logout} = useUserStore();
   const {cart} = useCartStore();
   const isAdmin = user?.role === "admin";
+  const [isOpen, setIsOpen] = useState(false);
+
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <header className="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur-md shadow-lg z-40 transition-all duration-300 border-b border-emerald-800">
@@ -43,13 +49,53 @@ const Navbar = () => {
         </Link>
       )}
 
-      {user ? (
-        <button onClick={logout}
-        className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-md flex items-center transition duration-300 ease-in-out">
-          <LogOut size = {18} />
-          <span className="hidden sm:inline ml-2"> Log Out</span>
-        </button>
-      ) : (
+{user ? (
+              <div className="relative inline-block text-left">
+                <button onClick={toggleDropdown}
+                  className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-md flex items-center transition duration-300 ease-in-out">
+                 {/*  <LogOut size={18} />
+                  <span className="hidden sm:inline ml-2"> Log Out</span>  */}
+                  <Menu size={24} />
+                </button>
+
+                {isOpen && (
+                  <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                    <div className="py-1">
+                      <Link
+                        to="/profile"
+                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center">
+                        <User className="mr-2" size={18} />
+                        Profile
+                      </Link>
+                      <Link
+                        to="/settings"
+                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center">
+                        <Settings className="mr-2" size={18} />
+                        Settings
+                      </Link>
+
+                      <Link
+                        to="/privacy"
+                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center">
+                        <Settings className="mr-2" size={18} />
+                        Privary & Data
+                      </Link>
+                      <Link
+                        to="/about"
+                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center">
+                        <Settings className="mr-2" size={18} />
+                        About Us
+                      </Link>
+                      <button
+                        onClick={logout}
+                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center">
+                        <LogOut className="mr-2" size={18} />
+                        Log Out
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div> ): (
         <>
         <Link 
           to={"/signup"}
