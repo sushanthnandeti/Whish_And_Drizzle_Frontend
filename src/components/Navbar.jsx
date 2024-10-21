@@ -63,32 +63,32 @@ const Navbar = () => {
                     <div className="py-1">
                       <Link
                         to="/profile"
-                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center">
+                        className=" w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center">
                         <User className="mr-2" size={18} />
                         Profile
                       </Link>
                       <Link
                         to="/settings"
-                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center">
+                        className=" w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center">
                         <Settings className="mr-2" size={18} />
                         Settings
                       </Link>
 
                       <Link
                         to="/privacy"
-                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center">
+                        className=" w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center">
                         <Settings className="mr-2" size={18} />
-                        Privary & Data
+                        Privacy & Data
                       </Link>
                       <Link
                         to="/about"
-                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center">
+                        className=" w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center">
                         <Settings className="mr-2" size={18} />
                         About Us
                       </Link>
                       <button
                         onClick={logout}
-                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center">
+                        className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center">
                         <LogOut className="mr-2" size={18} />
                         Log Out
                       </button>

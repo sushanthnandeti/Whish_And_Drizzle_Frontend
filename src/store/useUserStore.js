@@ -56,6 +56,29 @@ export const useUserStore = create((set,get) => ({
             set({checkingAuth: false, user : null})  
         }
     },
+    togglePrivacy: async () => {
+        set({ loading: true });
+    
+        try {
+            const res = await axios.post("/auth/privacy");
+            
+            // Update user state
+            set(prevState => ({
+                user: { ...prevState.user, ...res.data }, // Merge the updated user data
+                loading: false
+            }));
+    
+            // Use get to access the updated user state if your store supports it
+            const updatedUser = get().user; // This assumes you have a `get` function to retrieve the state
+            console.log(updatedUser.privacy); // Now you can log the updated user state
+    
+        } catch (error) {
+            set({ loading: false });
+            toast.error(error.response?.data?.message || "An error occurred");
+            console.log(error.message);
+        }
+    },
+    
 
     refreshToken : async() => {
         

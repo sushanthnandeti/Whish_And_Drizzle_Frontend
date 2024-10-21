@@ -3,6 +3,7 @@ import CategoryItem from "../components/CategoryItem";
 import { useProductStore } from "../store/useProductStore";
 import FeaturedProducts from "../components/FeaturedProducts.jsx";
 
+
 const categories = [
 	{ href: "/cakes", name: "Cakes", imageUrl: "/cakes.jpg" },
 	{ href: "/cheesecakes", name: "Cheesecakes", imageUrl: "/cheesecakes.jpg" },
@@ -17,10 +18,13 @@ const categories = [
 const HomePage = () =>{
 
     const {fetchFeaturedProducts, products, isLoading } = useProductStore();
+   
 
     useEffect(()=> {
         fetchFeaturedProducts();
     },[fetchFeaturedProducts]);
+
+
 
     return (
         <div className="relative min-h-screen text-white overflow-hidden">
