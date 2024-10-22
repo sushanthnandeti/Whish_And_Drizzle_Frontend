@@ -10,6 +10,7 @@ import PurchaseCancelPage from "./pages/PurchaseCancelPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import PrivacyPage from "./pages/PrivacyPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
+import SettingsPage from "./pages/SettingsPage.jsx";
 import Navbar from "./components/Navbar.jsx";
 import { Toaster } from "react-hot-toast";
 import { useUserStore } from "./store/useUserStore.js";
@@ -60,6 +61,7 @@ function App() {
         <Route path = '/about' element = {user ? <AboutPage /> : <Navigate to='/login' />} />
         <Route path = '/privacy' element = {user ? <PrivacyPage /> : <Navigate to='/login' />} />
         <Route path = '/profile' element = {user ? <ProfilePage /> : <Navigate to='/login' />} />
+        <Route path = '/settings' element = {user ? <SettingsPage /> : <Navigate to='/login' />} />
        </Routes>
     </div> 
     <Toaster />

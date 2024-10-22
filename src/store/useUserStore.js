@@ -56,6 +56,7 @@ export const useUserStore = create((set,get) => ({
             set({checkingAuth: false, user : null})  
         }
     },
+
     togglePrivacy: async () => {
         set({ loading: true });
     
@@ -99,7 +100,39 @@ export const useUserStore = create((set,get) => ({
             }
     },
    
+
+    // Change Username logic
+  changeUsername: async (newName) => {
+    set({ loading: true });
+
+    try {
+      const res = await axios.put("/auth/changename", { newName });
+      set((prevState) => ({
+        user: { ...prevState.user, name: newName }, // Update name in store
+        loading: false,
+      }));
+      toast.success("Username updated successfully");
+    } catch (error) {
+      set({ loading: false });
+      toast.error(error.response?.data?.message || "Error updating name");
+    }
+  },
+
+  // Change Password logic
+  changePassword: async (currentPassword, newPassword) => {
+    set({ loading: true });
+
+    try {
+      const res = await axios.put("/auth/changepassword", { currentPassword, newPassword });
+      set({ loading: false });
+      toast.success("Password updated successfully");
+    } catch (error) {
+      set({ loading: false });
+      toast.error(error.response?.data?.message || "Error updating password");
+    }
+  },
 }));
+
 
  
     // Refresh Token Axios Interceptor
