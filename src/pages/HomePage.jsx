@@ -5,13 +5,13 @@ import FeaturedProducts from "../components/FeaturedProducts.jsx";
 
 
 const categories = [
-	{ href: "/cakes", name: "Cakes", imageUrl: "/cakes.jpg" },
-	{ href: "/cheesecakes", name: "Cheesecakes", imageUrl: "/cheesecakes.jpg" },
+	{ href: "/wedding cakes", name: "Wedding Cakes", imageUrl: "/wedding_cakes.jpg" },
+	{ href: "/birthday cakes", name: "Birthday Cakes", imageUrl: "/birthday_cakes.jpg" },
 	{ href: "/cookies", name: "Cookies", imageUrl: "/cookies.jpg" },
-	{ href: "/glasses", name: "Glasses", imageUrl: "/glasses.png" },
-	{ href: "/jackets", name: "Jackets", imageUrl: "/jackets.jpg" },
-	{ href: "/suits", name: "Suits", imageUrl: "/suits.jpg" },
-	{ href: "/bags", name: "Bags", imageUrl: "/bags.jpg" },
+	{ href: "/cup cakes", name: "Cup Cakes", imageUrl: "/cup_cakes.jpg" },
+	{ href: "/pastries", name: "Pastries", imageUrl: "/pastries.jpg" },
+	{ href: "/seasonal", name: "Seasonal", imageUrl: "/seasonal.jpg" },
+
 ];
 
 
